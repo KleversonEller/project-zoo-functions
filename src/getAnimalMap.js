@@ -19,8 +19,8 @@ const objetoLocalAnimal = () => {
   return objetos;
 };
 
-const tipoAnimaisList = [...objetoLocalAnimal().NE, ...objetoLocalAnimal().NW,
-  ...objetoLocalAnimal().SE, ...objetoLocalAnimal().SW];
+// const tipoAnimaisList = [...objetoLocalAnimal().NE, ...objetoLocalAnimal().NW,
+//   ...objetoLocalAnimal().SE, ...objetoLocalAnimal().SW];
 
 function getAnimalMap(options) {
   // seu código aqui
