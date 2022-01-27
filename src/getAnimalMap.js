@@ -1,47 +1,33 @@
 const data = require('../data/zoo_data');
 
 const { species } = data;
+const locais = ['NE', 'NW', 'SE', 'SW'];
 
-const separaAnimais = (localizacao) => {
-  const animais = [];
-  if (localizacao !== undefined) {
+const objetoLocalAnimal = () => {
+  const objetos = {};
+  locais.map((local) => {
+    const animais = [];
     species.filter(({ location, name }) => {
-      if (location === localizacao) {
-        return animais.push(name);
+      if (location === local) {
+        animais.push(name);
       }
-      return '';
+      return animais;
     });
-  } else {
-    species.forEach(({ name }) => animais.push(name));
-  }
-  return animais;
-};
-
-const criaObjeto = () => ({
-  NE: separaAnimais('NE'),
-  NW: separaAnimais('NW'),
-  SE: separaAnimais('SE'),
-  SW: separaAnimais('SW'),
-});
-
-const separaAnimais2 = () => {
-  const objeto = {};
-  separaAnimais().forEach((animal, index) => {
-    const nomeAnimais = [];
-    species[index].residents.forEach(({ name }) => nomeAnimais.push(name));
-    objeto[animal] = nomeAnimais;
+    objetos[local] = animais;
+    return animais;
   });
-  return objeto;
+  return objetos;
 };
+
+const tipoAnimaisList = [...objetoLocalAnimal().NE, ...objetoLocalAnimal().NW,
+  ...objetoLocalAnimal().SE, ...objetoLocalAnimal().SW];
 
 function getAnimalMap(options) {
   // seu código aqui
-  if (options === undefined) {
-    return criaObjeto();
+  if (options === undefined || options.includeNames === false
+    || options.includeNames === undefined) {
+    return objetoLocalAnimal();
   }
-  return criaObjeto();
 }
 
 module.exports = getAnimalMap;
-
-console.log(separaAnimais2());
