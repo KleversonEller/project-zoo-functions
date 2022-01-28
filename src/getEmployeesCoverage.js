@@ -49,5 +49,3 @@ function getEmployeesCoverage(parametro) {
 }
 
 module.exports = getEmployeesCoverage;
-
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));

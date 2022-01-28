@@ -11,9 +11,9 @@ const parametroAnimal = (parametro) => animaisDia.find((objeto) =>
   Object.keys(objeto)[0] === parametro);
 
 const animaisDoDia = (parametro) => {
-  const valor = species.map(({ availability }) => availability);
+  const diasDosAnimais = species.map(({ availability }) => availability);
   const resultado = [];
-  valor.forEach((array, index) => {
+  diasDosAnimais.forEach((array, index) => {
     if (array.find((dia) => dia === parametro)) {
       resultado.push(Object.keys(animaisDia[index])[0]);
       return false;
